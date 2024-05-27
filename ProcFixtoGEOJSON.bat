@@ -8,12 +8,12 @@ set /p PROCEDURE_ID=Enter The procedure ID:
 ECHO ^{
 ECHO 	"type": "FeatureCollection",
 ECHO 	"features": ^[
-)>>!PROCEDURE_ID!_Text.geojson
+)>!PROCEDURE_ID!_Text.geojson
 (
 ECHO ^{
 ECHO 	"type": "FeatureCollection",
 ECHO 	"features": ^[
-)>>!PROCEDURE_ID!_Symbols.geojson
+)>!PROCEDURE_ID!_Symbols.geojson
 
 :FIX_ID_INPUT
 REM Prompt the user for the FIX_ID
@@ -68,7 +68,8 @@ if "%LAT_DECIMAL%"=="" (
 		ECHO 				^]
 		ECHO 			^},
 		ECHO 			"properties": ^{
-		ECHO 				"style": "otherWaypoints"
+		ECHO 				"style": "otherWaypoints",
+		ECHO 				"waypoint_id": "!FIX_ID!"
 		ECHO 			^}
 		ECHO 		^},
 	)>>!PROCEDURE_ID!_Symbols.geojson
